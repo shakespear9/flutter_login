@@ -20,6 +20,6 @@ class _MobileScaffoldState extends State<MobileScaffold> {
         appBar: myAppBar,
         backgroundColor: myDefaultBackgroundColor,
         drawer: myDrawer(context),
-        body: HomePage());
+        body: widget.child);
   }
 }

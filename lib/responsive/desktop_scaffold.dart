@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/constant.dart';
 import 'package:flutter_login/pages/home_page.dart';
+import 'package:flutter_login/shared/bloc/account/account_bloc.dart';
 import 'package:flutter_login/util/my_box.dart';
 import 'package:flutter_login/util/my_tile.dart';
 
 class DesktopScaffold extends StatefulWidget {
-  DesktopScaffold({super.key, required this.child});
+  const DesktopScaffold({super.key, required this.child});
 
   final Widget child;
 
@@ -26,34 +27,36 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
         //     builder: (context, constraints) => Container(
         //           child: Text("asdsad"),
         //         ))
-        const Flexible(child: HomePage())
+
+        Flexible(child: widget.child),
+
         // LayoutBuilder(builder: (context, constraints) {
-        //   return Expanded(
-        //     flex: 3,
-        //     child: Column(
-        //       children: [
-        //         AspectRatio(
-        //           aspectRatio: 4,
-        //           child: SizedBox(
-        //             width: double.infinity,
-        //             child: GridView.builder(
-        //               itemCount: 4,
-        //               gridDelegate:
-        //                   const SliverGridDelegateWithFixedCrossAxisCount(
-        //                       crossAxisCount: 4),
-        //               itemBuilder: (context, index) => const MyBox(),
-        //             ),
+        //   return
+        // Expanded(
+        //   flex: 3,
+        //   child: Column(
+        //     children: [
+        //       AspectRatio(
+        //         aspectRatio: 4,
+        //         child: SizedBox(
+        //           width: double.infinity,
+        //           child: GridView.builder(
+        //             itemCount: 4,
+        //             gridDelegate:
+        //                 const SliverGridDelegateWithFixedCrossAxisCount(
+        //                     crossAxisCount: 4),
+        //             itemBuilder: (context, index) => const MyBox(),
         //           ),
         //         ),
-        //         Expanded(
-        //           child: ListView.builder(
-        //               itemCount: 5,
-        //               itemBuilder: (context, index) => const MyTile()),
-        //         ),
-        //       ],
-        //     ),
-        //   );
-        // }),
+        //       ),
+        //       Expanded(
+        //         child: ListView.builder(
+        //             itemCount: 5,
+        //             itemBuilder: (context, index) => const MyTile()),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         // Expanded(
         //   flex: 1,
         //   child: Column(
@@ -66,6 +69,46 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
         // )
         // const HomePage()
         // tiles below it
+
+        // Flexible(
+        //   child: Row(children: [
+        //     Expanded(
+        //       flex: 3,
+        //       child: Column(
+        //         children: [
+        //           AspectRatio(
+        //             aspectRatio: 4,
+        //             child: SizedBox(
+        //               width: double.infinity,
+        //               child: GridView.builder(
+        //                 itemCount: 4,
+        //                 gridDelegate:
+        //                     const SliverGridDelegateWithFixedCrossAxisCount(
+        //                         crossAxisCount: 4),
+        //                 itemBuilder: (context, index) => const MyBox(),
+        //               ),
+        //             ),
+        //           ),
+        //           Expanded(
+        //             child: ListView.builder(
+        //                 itemCount: 5,
+        //                 itemBuilder: (context, index) => const MyTile()),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //     Expanded(
+        //       flex: 1,
+        //       child: Column(
+        //         children: [
+        //           Expanded(
+        //             child: Container(color: Colors.pink),
+        //           )
+        //         ],
+        //       ),
+        //     )
+        //   ]),
+        // )
       ]),
     );
   }

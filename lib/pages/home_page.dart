@@ -1,12 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login/responsive/desktop_scaffold.dart';
-import 'package:flutter_login/responsive/mobile_scaffold.dart';
-import 'package:flutter_login/responsive/responsive_layout.dart';
-import 'package:flutter_login/responsive/tablet_scaffold.dart';
-import 'package:flutter_login/shared/bloc/account/account_bloc.dart';
 
 import '../util/my_box.dart';
 import '../util/my_tile.dart';

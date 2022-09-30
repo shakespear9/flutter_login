@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login/pages/a_page.dart';
 import 'package:flutter_login/pages/home_page.dart';
+import 'package:flutter_login/pages/login_page.dart';
+import 'package:flutter_login/pages/setting_page.dart';
 import 'package:flutter_login/responsive/desktop_scaffold.dart';
 import 'package:flutter_login/responsive/mobile_scaffold.dart';
 import 'package:flutter_login/responsive/responsive_layout.dart';
@@ -18,7 +21,7 @@ final appRouter = GoRouter(
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
-          return RespnsiveLayout(
+          return ResponsiveLayout(
             desktopScaffold: DesktopScaffold(child: child),
             mobileScaffold: MobileScaffold(child: child),
             tabletScaffold: TabletScaffold(
@@ -29,8 +32,20 @@ final appRouter = GoRouter(
         routes: <RouteBase>[
           GoRoute(
             path: "/home",
-            builder: (context, state) => const HomePage(),
+            builder: (context, state) => HomePage(),
+          ),
+          GoRoute(
+            path: "/setting",
+            builder: (context, state) => const SettingPage(),
+          ),
+          GoRoute(
+            path: "/a",
+            builder: (context, state) => const APage(),
           ),
         ],
+      ),
+      GoRoute(
+        path: "/login",
+        builder: (context, state) => const LoginPage(),
       )
     ]);

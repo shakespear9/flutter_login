@@ -20,6 +20,6 @@ class _TabletScaffoldState extends State<TabletScaffold> {
         appBar: myAppBar,
         backgroundColor: myDefaultBackgroundColor,
         drawer: myDrawer(context),
-        body: HomePage());
+        body: widget.child);
   }
 }

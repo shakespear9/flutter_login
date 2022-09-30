@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login/shared/bloc/account/account_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,11 +16,25 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  Future signIn() async {
+  Future signInFirebase() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
     );
+  }
+
+  void signIn() {
+    context.read<AccountBloc>().add(AccountEventLogIn());
+    GoRouter.of(context).go('/home');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final isLogin = context.read<AccountBloc>().state.isLogin;
+    if (isLogin) {
+      GoRouter.of(context).go('/home');
+    }
   }
 
   @override
@@ -111,8 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: GestureDetector(
-                    onTap: () =>
-                        context.read<AccountBloc>().add(AccountEventLogIn()),
+                    onTap: signIn,
                     child: Container(
                       constraints: const BoxConstraints(maxWidth: 500),
                       padding: const EdgeInsets.all(12),

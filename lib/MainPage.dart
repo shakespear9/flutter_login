@@ -31,12 +31,17 @@ class MainPage extends StatelessWidget {
         body: BlocBuilder<AccountBloc, AccountState>(
           builder: (context, state) {
             return state.isLogin
-                ? RespnsiveLayout(
-                    desktopScaffold: DesktopScaffold(child: const HomePage()),
-                    mobileScaffold: MobileScaffold(child: const HomePage()),
-                    tabletScaffold: TabletScaffold(
-                      child: const HomePage(),
-                    ),
+                ? LayoutBuilder(
+                    builder: (context, constraints) {
+                      return ResponsiveLayout(
+                        desktopScaffold:
+                            const DesktopScaffold(child: HomePage()),
+                        mobileScaffold: MobileScaffold(child: const HomePage()),
+                        tabletScaffold: TabletScaffold(
+                          child: const HomePage(),
+                        ),
+                      );
+                    },
                   )
                 : const LoginPage();
           },
